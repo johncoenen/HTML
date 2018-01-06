@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML Forms - Fieldset and Legend</title>
+</head>
+
+<body>
+  <h1>HTML Forms: Screen Reader Interpretations</h1>
+  <form>
+      <fieldset>
+          <legend>Fruit juice size</legend>
+            <p>
+                <input type="radio" name="size" id="size_1" value="small">
+                <label for="size_1">Small</label>
+           </p>
+           <p>
+                <input type="radio" name="size" id="size_2" value="medium">
+                <label for="size_2">Medium</label>
+            </p>
+            <p>
+                <input type="radio" name="size" id="size_3" value="large">
+                <label for="size_3">Large</label>
+            </p>
+        </fieldset>
+    </form>
+  <!-- When reading the above form, a screen reader will speak "Fruit juice size small" for the first widget, "Fruit juice size medium" for the second, and "Fruit juice size large" for the third. -->
+
+  <form>
+    <fieldset>
+      <legend>Clickable Labels!</legend>
+        <p>
+          <label for="taste_1">I like apple bubba!</label>
+          <input type="checkbox" id="taste_1" name="taste_apple" value="1">
+        </p>
+        <p>
+          <label for="taste_2">I like orange baby!</label>
+          <input type="checkbox" id="taste_2" name="taste_orange" value="2">
+        </p>
+    </fieldset>
+  </form>
+<!-- Another advantage of properly set up labels is that you can click the label to activate the corresponding widget, in all browsers. -->
+
+  <section>
+    <p>Required fields are followed by <abbr title="required">*</abbr>.</p>
+
+    <h6>Example</h6>
+    <div>
+      <label for="username">Name:</label>
+      <input type="text" name="username">
+      <label for="username"><abbr title="required">*</abbr></label>
+    </div>
+<!-- In the first example, the label is not read out at all with the input -->
+    <h6>The previous example would be better like this:(see source)</h6>
+    <div>
+      <label for="username">
+        <span>Name:</span>
+        <input id="username" type="text" name="username">
+        <abbr title="required">*</abbr>
+      </label>
+    </div>
+<!-- In the second example, things are a bit clearer — the label read out along with the input is "name star name edit text", and the labels are still read out separately.  -->
+    <h6>...but this is probably the best:(see source)</h6>
+    <div>
+      <label for="username">Name: <abbr title="required">*</abbr></label>
+      <input id="username" type="text" name="username">
+    </div>
+<!-- The third example is best — the actual label is read out all together, and the label read out with the input is "name star edit text". -->    
+  </section>
+</body>
+
+</html>

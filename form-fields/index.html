@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML Native Form Widgets</title>
+</head>
+<body>
+  <section>
+  <h3>Single Line Text Field</h3>
+  <input type="text" id="comment" value="I'm a text field">
+  <h3>E-Mail address field</h3>
+  <input type="email" id="email" name="email" multiple>
+  <h3>Password field</h3>  
+  <input type="password" id="pwd" name="pwd">
+  <!-- Keep in mind this is just a user interface feature; unless you submit your form securely, it will get sent in plain text, which is bad for security — a malicious party could intercept your data and steal passwords, credit card details, or whatever else you've submitted. The best way to protect users from this is to host any pages involving forms over a secure connection (i.e. at an https:// ... address), so the data is encrypted before it is sent. -->
+  <h3>Search field</h3>
+  <input type="search" id="search" name="search">
+  <h3>Phone number field</h3>
+  <input type="tel" id="tel" name="tel">
+  <h3>URL field</h3>
+  <input type="url" id="url" name="url">
+  <h3>Multi-line text fields</h3>
+  <p>A multi-line text field is specified using a <em>textarea</em> element, rather than using the <em>input</em> element.</p>
+    <textarea cols="30" rows="10">This is a multi-line text area. </textarea>
+</section>
+<section>
+  <h2>Drop-down content</h2>
+  <h3>Select box</h3>
+  <select id="simple" name="simple">
+    <optgroup label="fruits">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Lemon</option>
+    </optgroup>
+    <optgroup label="vegetables">
+      <option>Carrot</option>
+      <option>Eggplant</option>
+      <option>Potato</option>
+    </optgroup>  
+  </select>
+  <h3>Multiple choice select box</h3>
+  <select multiple id="multi" name="multi">
+    <option>Mango</option>
+    <option>Pear</option>
+    <option>Strawberry</option>
+  </select>
+  <h3>Autocomplete box</h3>
+  <p>You can provide suggested, automatically-completed values for form widgets using the <em>datalist</em>element with some child<em>option</em>elements tp specify the values to display.</p>
+  <label for="myFruit">What is your favorite fruit?</label>
+  <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+  <datalist id="mySuggestion">
+    <option>Apple</option>
+    <option>Banana</option>
+    <option>Blackberry</option>
+    <option>Blueberry</option>
+    <option>Lime</option>
+    <option>Lychee</option>
+    <option>Peach</option>
+    <option>Pear</option>    
+  </datalist>
+  <h4>Datalist support and fallbacks</h4>
+  <p>The <em>datalist</em> element is a very recent addition to HTML forms, so browser support is a bit more limited than what we saw earlier. Most notably, it isn't supported in IE versions below 10, and Safari still doesn't support it at the time of writing.</p>
+  <p>See code for the following trick that provides a fallback for unsupported browsers.</p>
+  <label for="myFruit">What is your favorite fruit? (With fallback)</label>
+  <input type="text" id="myFruit" name="fruit" list="fruitlist">
+
+  <datalist id="fruitList">
+      <label for="suggestion">or pick a fruit</label>
+      <select id="suggestion" name="altFruit">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+      </select>
+    </datalist>
+    <p>Browsers that support the <em>datalist</em> element will ignore all the elements that are not <em>option</em> elements and will work as expected. On the other hand, browsers that do not support the <em>datalist</em> element will display the label and the select box. Of course, there are other ways to handle the lack of support for the <em>datalist</em> element, but this is the simplest (others tend to require JavaScript).</p>
+</section>
+
+<section>
+  <h2>Checkable items</h2>
+  <p>Checkable items are widgets whose state you can change by clicking on them.</p>
+  <h3>Check box</h3>
+  <input type="checkbox" checked id="carrots" name="carrots" value="carrots"> 
+  <h3>Radio button</h3>
+  <input type="radio" checked id="soup" name="meal">
+  <h3>Example:</h3>
+  <fieldset>
+    <legend>What is your favorite meal?</legend>
+    <ul>
+      <li>
+        <label for="soup">Soups</label>
+        <input type="radio" checked id="soup" name="meal" value="soup">
+      </li>
+      <li>
+        <label for="curry">Curry</label>
+        <input type="radio" id="curry" name="meal" value="curry">
+      </li>
+      <li>
+        <label for="pizza">Pizza</label>
+        <input type="radio" id="pizza" name="meal" value="pizza">        
+      </li>
+    </ul>
+  </fieldset>
+</section>
+
+<section>
+  <h2>Buttons</h2>
+  <p>There are three kinds of buttons within HTML forms: Submit, Reset, and Anonymous.</p>
+  <h3>submit</h3>
+  <button type="submit">
+    This is a<br><strong>submit button</strong>
+  </button>
+  <input type="submit" value="This is a submit button">
+  <h3>reset</h3>
+  <button type="reset">
+    This is a <br><strong>reset button</strong>
+  </button>
+  <input type="reset" value="This is a reset button">
+  <h3>anonymous</h3>
+  <button type="button">
+    This is a <br><strong>anonymous button</strong>
+  </button>
+  <input type="button" value="This is an anonymous button">
+</section>
+
+<section>
+  <h2>Advanced form widgets</h2>
+  <h3>Numbers</h3>
+  <input type="number" name="age" id="age" min="1" max="10" step="2">
+  <h3>Sliders</h3>
+  <input type="range" name="beans" id="beans" min="0" max="500" step="10">
+
+  <label for="beans">How many beans can you eat?</label>
+  <span class="beancount"></span>
+  <script>
+    var beans = document.querySelector('#beans');
+var count = document.querySelector('.beancount');
+
+count.textContent = beans.value;
+
+beans.oninput = function() {
+  count.textContent = beans.value;
+}
+</script>
+<h3>Date and time picker</h3>
+<h4>datime-local</h4>
+<input type="datetime-local" name="datetime" id="datetime">
+<h4>month</h4>
+<input type="month" name="month" id="month">
+<h4>time<h4>
+<input type="time" name="time" id="time">
+<h4>week</h4>
+<input type="week" name="week" id="week">
+<h3>Color picker</h3>
+<input type="color" name="color" id="color">
+</section>
+</body>
+</html>
